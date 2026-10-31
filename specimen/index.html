@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Runde Variable</title>
+<style>
+  @font-face {
+    font-family: "Open Runde Variable";
+    src: url("../fonts/OpenRundeVariable[wght].woff2") format("woff2-variations"),
+         url("../fonts/OpenRundeVariable[wght].woff2") format("woff2");
+    font-weight: 400 700;
+    font-display: block;
+  }
+  :root {
+    --bg: #fbfaf8;
+    --fg: #1a1a19;
+    --muted: #6f6d68;
+    --line: #e6e3dd;
+    --accent: #3b5bdb;
+    --w: 400;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0d1117; --fg: #e6edf3; --muted: #8b949e; --line: #21262d; --accent: #79a1ff; }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Open Runde Variable", system-ui, sans-serif;
+    font-weight: var(--w);
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 32px 24px 96px; }
+
+  header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    padding-bottom: 20px; border-bottom: 1px solid var(--line); font-size: 15px; }
+  header .meta { color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; }
+
+  .control { position: sticky; top: 0; z-index: 1; background: var(--bg);
+    display: grid; grid-template-columns: auto 1fr auto auto; gap: 16px; align-items: center;
+    padding: 16px 0; border-bottom: 1px solid var(--line); font-weight: 500; font-size: 14px; }
+  .control output { min-width: 3ch; text-align: right; font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 600; }
+  .control input { width: 100%; accent-color: var(--accent); }
+  .control button { font: inherit; font-size: 13px; color: var(--fg); background: transparent;
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+  .control button:hover { border-color: var(--muted); }
+
+  .hero { font-size: clamp(96px, 20vw, 248px); line-height: 0.95; letter-spacing: -0.035em;
+    margin: 48px 0 8px; }
+  .lede { font-size: clamp(22px, 3.2vw, 36px); line-height: 1.2; letter-spacing: -0.015em;
+    max-width: 22ch; margin: 0 0 56px; text-wrap: balance; }
+
+  h2 { font-size: 13px; font-weight: 500; color: var(--muted); margin: 64px 0 16px; letter-spacing: 0.01em; }
+
+  .steps { display: grid; gap: 4px; }
+  .steps > div { display: grid; grid-template-columns: 56px 1fr; align-items: baseline; gap: 16px;
+    font-size: clamp(28px, 5vw, 56px); letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; }
+  .steps > div > span { font-size: 13px; color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; letter-spacing: 0; }
+
+  .glyphs { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.25; letter-spacing: 0.02em; word-break: break-all; }
+  .body { columns: 2 320px; column-gap: 48px; font-size: 18px; line-height: 1.55; }
+  .body p { margin: 0 0 1em; }
+  .note { font-size: 14px; color: var(--muted); font-weight: 400; max-width: 64ch; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>Open Runde Variable</div>
+    <div class="meta">wght 400 – 700 · fork of Open Runde 1.0.1</div>
+  </header>
+
+  <div class="control">
+    <label for="w">Weight</label>
+    <input id="w" type="range" min="400" max="700" step="1" value="400">
+    <output id="wv" for="w">400</output>
+    <button id="play" type="button">Animate</button>
+  </div>
+
+  <div class="hero">Runde</div>
+  <p class="lede">Soft corners, one file, every weight in between.</p>
+
+  <h2>Continuous — every 50 units</h2>
+  <div class="steps" id="steps"></div>
+
+  <h2>Glyphs that needed outline repair to interpolate</h2>
+  <div class="glyphs">R e æ Ã Ñ Õ Ø ŵ Ŧ ǅ ẞ ğ ł ő ƛ ̛ ơ ư Ж Щ ю ₹ € £ @ &amp; ¶ § ※ → ⇄</div>
+
+  <h2>Text</h2>
+  <div class="body">
+    <p>Open Runde is a soft, rounded take on Inter. It shipped as four static weights; this fork stitches them back together into one variable font with a single weight axis, so the space between Regular and Bold is no longer empty.</p>
+    <p>Each master was flattened on its own, so node counts drifted between weights. The build aligns nodes along every contour by arc length and splits segments where one weight has a point the others lack — the masters' shapes are reproduced exactly, and the in-between weights interpolate smoothly.</p>
+    <p>0123456789 — The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow. ¿Qué pasa? Größe, façade, naïve, Ångström.</p>
+  </div>
+
+  <h2>Notes</h2>
+  <p class="note">Kerning and mark positioning come from Regular at every weight for now. 15 rare glyphs whose contour topology changes between weights (e.g. Ⓦ, ₦, ₩, Ҋ) stay at their Regular shape.</p>
+</div>
+
+<script>
+  const root = document.documentElement;
+  const input = document.getElementById("w");
+  const out = document.getElementById("wv");
+  const set = (v) => { root.style.setProperty("--w", v); out.value = Math.round(v); input.value = v; };
+  input.addEventListener("input", () => { stop(); set(+input.value); });
+
+  const steps = document.getElementById("steps");
+  for (let w = 400; w <= 700; w += 50) {
+    const row = document.createElement("div");
+    row.innerHTML = `<span>${w}</span><div style="font-weight:${w}">Hamburgefonstiv 0123</div>`;
+    steps.append(row);
+  }
+
+  let raf = null;
+  const btn = document.getElementById("play");
+  function stop() { if (raf) cancelAnimationFrame(raf); raf = null; btn.textContent = "Animate"; }
+  btn.addEventListener("click", () => {
+    if (raf) return stop();
+    btn.textContent = "Stop";
+    const t0 = performance.now();
+    const tick = (t) => {
+      const p = (1 - Math.cos(((t - t0) / 2400) * Math.PI)) / 2;
+      set(400 + 300 * p);
+      raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+  });
+</script>
+</body>
+</html>
