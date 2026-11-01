@@ -24,14 +24,14 @@ body { font-family: "Pollen", sans-serif; font-weight: 450; font-variation-setti
 
 ## Docs
 
-- [Specimen](https://pollen-cev.pages.dev/specimen/): live weight and roundness controls, type scale, glyph table
+- [Specimen](https://pollen.nidheesh.dev/specimen/): live weight and roundness controls, type scale, glyph table
 - [Source code and README](https://github.com/nidheesh-m-vakharia/pollen): build scripts, changelog, contributing guide
-- [License (OFL.txt)](https://pollen-cev.pages.dev/OFL.txt): full SIL Open Font License 1.1 text with copyright notices
+- [License (OFL.txt)](https://pollen.nidheesh.dev/OFL.txt): full SIL Open Font License 1.1 text with copyright notices
 
 ## Downloads
 
-- [Pollen[ROND,wght].woff2](https://pollen-cev.pages.dev/fonts/Pollen%5BROND,wght%5D.woff2): variable font for the web
-- [Pollen[ROND,wght].ttf](https://pollen-cev.pages.dev/fonts/Pollen%5BROND,wght%5D.ttf): variable font for desktop apps
+- [Pollen[ROND,wght].woff2](https://pollen.nidheesh.dev/fonts/Pollen%5BROND,wght%5D.woff2): variable font for the web
+- [Pollen[ROND,wght].ttf](https://pollen.nidheesh.dev/fonts/Pollen%5BROND,wght%5D.ttf): variable font for desktop apps
 
 ## Upstream
 

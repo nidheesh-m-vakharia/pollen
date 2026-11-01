@@ -33,7 +33,7 @@ The site is static. On localhost it fetches the font with a fresh query string o
 
 ### Domain, SEO and answer engines
 
-Absolute URLs (canonical, Open Graph, structured data, `robots.txt`, `sitemap.xml`, `llms.txt`) currently point at `https://pollen-cev.pages.dev` (recorded in `.site-url`). Point them at your domain in one go:
+Absolute URLs (canonical, Open Graph, structured data, `robots.txt`, `sitemap.xml`, `llms.txt`) currently point at `https://pollen.nidheesh.dev` (recorded in `.site-url`). Point them at your domain in one go:
 
 ```sh
 python3 scripts/set_domain.py https://pollentype.com
