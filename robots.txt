@@ -3,4 +3,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pollen.pages.dev/sitemap.xml
+Sitemap: https://pollen-cev.pages.dev/sitemap.xml
