@@ -1,1 +1,2 @@
 fonttools[woff]>=4.50
+pillow>=10  # scripts/make_icons.py only

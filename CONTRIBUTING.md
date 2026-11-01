@@ -29,7 +29,23 @@ The site is static. On localhost it fetches the font with a fresh query string o
 - Build command: *(leave empty)*
 - Build output directory: `/`
 
-`_redirects` sends `/` to `/specimen/`, and `_headers` sets CORS on `/fonts/*` plus cache lifetimes.
+`_redirects` sends `/` to `/specimen/` (301), and `_headers` sets CORS on `/fonts/*` plus cache lifetimes. `robots.txt`, `sitemap.xml` and `llms.txt` live at the root.
+
+### Domain, SEO and answer engines
+
+Absolute URLs (canonical, Open Graph, structured data, `robots.txt`, `sitemap.xml`, `llms.txt`) default to `https://pollen.pages.dev`. Point them at your domain in one go:
+
+```sh
+python3 scripts/set_domain.py https://pollentype.com
+```
+
+The specimen carries JSON-LD for the typeface and its FAQ. Keep the visible **Questions** section and the `FAQPage` data in `specimen/index.html` saying the same thing. `llms.txt` is a plain-language summary for AI assistants. Update its key facts when the font changes.
+
+### Icons
+
+```sh
+python3 scripts/make_icons.py   # favicon.svg/.ico, apple-touch-icon.png, icon-192/512.png from Pollen's own "P"
+```
 
 ### Banner
 
