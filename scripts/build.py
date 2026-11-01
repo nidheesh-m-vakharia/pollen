@@ -1,4 +1,4 @@
-"""Build Open Runde Variable (wght 400-700) from the four static Open Runde masters.
+"""Build Pollen (wght 400-700, ROND 0-100) from the four static Open Runde masters.
 
 The static OTFs were flattened per weight, so many glyphs have slightly different
 node structures between weights. This script makes every glyph point-compatible by
@@ -8,8 +8,10 @@ The compatible cubic outlines are then converted to TrueType quadratics with a s
 cu2qu conversion and merged with fontTools.varLib.
 """
 
+import json
 import math
 import sys
+import unicodedata
 from pathlib import Path
 
 from fontTools.cu2qu import curves_to_quadratic
@@ -22,8 +24,20 @@ from fontTools import varLib
 
 ROOT = Path(__file__).resolve().parent.parent
 MASTERS = [("Regular", 400), ("Medium", 500), ("Semibold", 600), ("Bold", 700)]
-FAMILY = "Open Runde Variable"
-PS_FAMILY = "OpenRundeVariable"
+FAMILY = "Pollen"
+PS_FAMILY = "Pollen"
+COPYRIGHT = (
+    "Copyright 2016 The Inter Project Authors (https://github.com/rsms/inter). "
+    "Copyright 2023 Laurids Kern (https://github.com/lauridskern/open-runde). "
+    "Copyright 2026 Nidheesh Vakharia."
+)
+DESIGNER = "Rasmus Andersson (Inter), Laurids Kern (Open Runde), Nidheesh Vakharia"
+LICENSE = (
+    "This Font Software is licensed under the SIL Open Font License, Version 1.1. "
+    "This license is available with a FAQ at: https://openfontlicense.org"
+)
+LICENSE_URL = "https://openfontlicense.org"
+VERSION = 1.0
 
 MATCH_GAP = 0.02  # DP gap cost; nodes closer than 2x this (in contour fraction) get matched
 CU2QU_ERROR = 1.0  # font units (UPM 2048)
@@ -348,11 +362,117 @@ def make_compatible(glyph_contours):
     return out, "repaired"
 
 
+# ---------------------------------------------------------------- roundness
+
+CORNER_MAX_CHORD = 300  # font units; rounded corners are short curves (bowls are much longer)
+CORNER_MIN_TURN = 35    # degrees the outline must turn across a corner
+
+
+def _sub(a, b):
+    return (a[0] - b[0], a[1] - b[1])
+
+
+def _tangent_in(seg):
+    """Direction arriving at the segment's end point."""
+    for p in reversed(seg[:-1]):
+        d = _sub(seg[-1], p)
+        if math.hypot(*d) > 1e-6:
+            return d
+    return None
+
+
+def _tangent_out(seg):
+    """Direction leaving the segment's start point."""
+    for p in seg[1:]:
+        d = _sub(p, seg[0])
+        if math.hypot(*d) > 1e-6:
+            return d
+    return None
+
+
+def _straight(seg, tol=2.0):
+    if len(seg) == 2:
+        return True
+    (x0, y0), (x1, y1) = seg[0], seg[-1]
+    L = math.hypot(x1 - x0, y1 - y0)
+    if L < 1e-6:
+        return False
+    return all(abs((x1 - x0) * (p[1] - y0) - (y1 - y0) * (p[0] - x0)) / L <= tol for p in seg[1:3])
+
+
+def corner_point(contour, i):
+    """Where the tangents either side of curve i meet, if it is a rounded corner."""
+    n = len(contour)
+    seg = contour[i]
+    if len(seg) != 4:
+        return None
+    # a rounded corner rounds off at least one straight edge; arcs between arcs are
+    # real curves (the dot on i, periods, bullets) and must stay round
+    if not (_straight(contour[(i - 1) % n]) or _straight(contour[(i + 1) % n])):
+        return None
+    din, dout = _tangent_in(contour[(i - 1) % n]), _tangent_out(contour[(i + 1) % n])
+    if not din or not dout:
+        return None
+    chord = math.dist(seg[0], seg[3])
+    if chord < 1e-6 or chord > CORNER_MAX_CHORD:
+        return None
+    cos = (din[0] * dout[0] + din[1] * dout[1]) / (math.hypot(*din) * math.hypot(*dout))
+    if cos > math.cos(math.radians(CORNER_MIN_TURN)):
+        return None
+    # solve seg[0] + a*din == seg[3] - b*dout, i.e. a*din + b*dout == seg[3] - seg[0]
+    det = din[0] * dout[1] - din[1] * dout[0]
+    if abs(det) < 1e-9:
+        return None
+    r = _sub(seg[3], seg[0])
+    a = (r[0] * dout[1] - r[1] * dout[0]) / det
+    b = (din[0] * r[1] - din[1] * r[0]) / det
+    if a < 0 or b < 0:
+        return None
+    x = (seg[0][0] + a * din[0], seg[0][1] + a * din[1])
+    if math.dist(x, seg[0]) > 2 * chord or math.dist(x, seg[3]) > 2 * chord:
+        return None
+    return x
+
+
+def find_corners(contours):
+    """Indices of rounded-corner curves, decided once on the default master."""
+    found = []
+    for ci, c in enumerate(contours):
+        picked = set()
+        for i in range(len(c)):
+            if (i - 1) % len(c) in picked:
+                continue  # never collapse two neighbouring curves into one point
+            if corner_point(c, i):
+                picked.add(i)
+        found.append(sorted(picked))
+    return found
+
+
+def sharpen(contours, corners):
+    """Collapse each rounded corner to the point where its neighbouring edges meet.
+    The point structure is unchanged, so sharp and round outlines interpolate."""
+    out = []
+    for c, idx in zip(contours, corners):
+        c = [list(s) for s in c]
+        n = len(c)
+        for i in idx:
+            x = corner_point([tuple(s) for s in c], i)
+            if x is None:
+                continue  # this master's geometry doesn't form a corner; keep it round
+            c[i] = [x, x, x, x]
+            c[(i - 1) % n][-1] = x
+            c[(i + 1) % n][0] = x
+        out.append([tuple(s) for s in c])
+    return out
+
+
 # ---------------------------------------------------------------- TrueType output
 
 def draw_tt(contours_per_master):
     """Draw compatible cubic contours into TTGlyphPens with shared cu2qu conversion."""
     pens = [TTGlyphPen(None) for _ in contours_per_master]
+    # CFF outer contours run counter-clockwise; TrueType wants clockwise
+    contours_per_master = [[reverse_contour(c) for c in cs] for cs in contours_per_master]
     for ci in range(len(contours_per_master[0])):
         cs = [c[ci] for c in contours_per_master]
         for pen, c in zip(pens, cs):
@@ -399,30 +519,83 @@ def to_truetype(font, glyphs):
     return font
 
 
-def set_names(font, style, weight):
+def set_names(font, style, family, ps_family):
     name = font["name"]
+    # 11/12 pointed at the upstream author's site; Pollen isn't theirs to vouch for (OFL clause 4)
     for rec in list(name.names):
-        if rec.nameID in (1, 2, 3, 4, 6, 16, 17):
+        if rec.nameID in (0, 1, 2, 3, 4, 5, 6, 8, 9, 11, 12, 13, 14, 16, 17):
             name.removeNames(nameID=rec.nameID)
-    name.setName(FAMILY, 1, 3, 1, 0x409)
+    name.setName(f"Version {VERSION:.3f}", 5, 3, 1, 0x409)
+    font["head"].fontRevision = VERSION
+    name.setName(COPYRIGHT, 0, 3, 1, 0x409)
+    name.setName("Nidheesh Vakharia", 8, 3, 1, 0x409)
+    name.setName(DESIGNER, 9, 3, 1, 0x409)
+    name.setName(LICENSE, 13, 3, 1, 0x409)
+    name.setName(LICENSE_URL, 14, 3, 1, 0x409)
+    name.setName(family, 1, 3, 1, 0x409)
     name.setName("Regular", 2, 3, 1, 0x409)
-    name.setName(f"{PS_FAMILY}-{style}", 3, 3, 1, 0x409)
-    name.setName(FAMILY, 4, 3, 1, 0x409)
-    name.setName(f"{PS_FAMILY}-{style}", 6, 3, 1, 0x409)
-    name.setName(FAMILY, 16, 3, 1, 0x409)
+    name.setName(f"{ps_family}-{style}", 3, 3, 1, 0x409)
+    name.setName(family, 4, 3, 1, 0x409)
+    name.setName(f"{ps_family}-{style}", 6, 3, 1, 0x409)
+    name.setName(family, 16, 3, 1, 0x409)
     name.setName(style, 17, 3, 1, 0x409)
+
+
+# ---------------------------------------------------------------- glyph index for the specimen
+
+GROUPS = ["Latin", "Greek", "Cyrillic", "Figures", "Punctuation", "Arrows", "Symbols", "Marks", "Other", "Private use"]
+
+
+def glyph_group(ch):
+    cat = unicodedata.category(ch)
+    name = unicodedata.name(ch, "")
+    if cat == "Co":
+        return "Private use"
+    if cat[0] == "M":
+        return "Marks"
+    for script in ("Latin", "Greek", "Cyrillic"):
+        if name.startswith(script.upper()):
+            return script
+    if cat[0] == "N":
+        return "Figures"
+    if cat[0] == "P":
+        return "Punctuation"
+    if "ARROW" in name:
+        return "Arrows"
+    if cat[0] == "S":
+        return "Symbols"
+    return "Other"
+
+
+def write_glyph_index(font, path):
+    """Every mapped, visible character, for the specimen's glyph table."""
+    glyphs = []
+    for cp, gname in sorted(font.getBestCmap().items()):
+        ch = chr(cp)
+        cat = unicodedata.category(ch)
+        if cat[0] == "Z" or cat in ("Cc", "Cf", "Cs"):
+            continue  # spaces and controls have nothing to show
+        name = unicodedata.name(ch, "PRIVATE USE" if cat == "Co" else "")
+        glyphs.append([cp, gname, name, glyph_group(ch)])
+    data = {"groups": GROUPS, "dottedCircle": 0x25CC in font.getBestCmap(), "glyphs": glyphs}
+    path.write_text(json.dumps(data, separators=(",", ":")))
+    return len(glyphs)
 
 
 # ---------------------------------------------------------------- main
 
-def main():
+def build(family=FAMILY, ps_family=PS_FAMILY):
     fonts = [TTFont(ROOT / "sources" / f"OpenRunde-{s}.otf") for s, _ in MASTERS]
     order = fonts[0].getGlyphOrder()
     assert all(f.getGlyphOrder() == order for f in fonts), "glyph orders differ"
     gsets = [f.getGlyphSet() for f in fonts]
 
+    # a second copy of each master becomes the sharp (ROND=0) end of the roundness axis
+    sharp_fonts = [TTFont(ROOT / "sources" / f"OpenRunde-{s}.otf") for s, _ in MASTERS]
+    assert all(f.getGlyphOrder() == order for f in sharp_fonts)  # read names while CFF is present
+
     stats, fallbacks = {}, []
-    tt_glyphs = [{} for _ in fonts]
+    tt_glyphs = [{} for _ in fonts + sharp_fonts]
     for name in order:
         per_master = [read_contours(gs, name) for gs in gsets]
         compat, how = make_compatible(per_master)
@@ -432,7 +605,9 @@ def main():
             compat = [per_master[0]] * len(fonts)
             how = "static"
         stats[how] = stats.get(how, 0) + 1
-        for m, g in enumerate(draw_tt(compat)):
+        corners = find_corners(compat[0])
+        sharp = [sharpen(c, corners) for c in compat]
+        for m, g in enumerate(draw_tt(compat + sharp)):
             tt_glyphs[m][name] = g
 
     print("glyph stats:", stats)
@@ -444,24 +619,31 @@ def main():
     axis.tag, axis.name = "wght", "Weight"
     axis.minimum, axis.default, axis.maximum = 400, 400, 700
     ds.addAxis(axis)
-    for (style, weight), font, glyphs in zip(MASTERS, fonts, tt_glyphs):
-        to_truetype(font, glyphs)
-        set_names(font, style, weight)
-        src = SourceDescriptor()
-        src.font = font
-        src.styleName = style
-        src.location = {"Weight": weight}
-        ds.addSource(src)
+    rond = AxisDescriptor()
+    rond.tag, rond.name = "ROND", "Roundness"
+    rond.minimum, rond.default, rond.maximum = 0, 100, 100
+    ds.addAxis(rond)
+    for (style, weight), font, sharp_font, glyphs, sharp_glyphs in zip(
+        MASTERS, fonts, sharp_fonts, tt_glyphs[: len(fonts)], tt_glyphs[len(fonts):]
+    ):
+        for f, g, roundness in ((font, glyphs, 100), (sharp_font, sharp_glyphs, 0)):
+            to_truetype(f, g)
+            set_names(f, style, family, ps_family)
+            src = SourceDescriptor()
+            src.font = f
+            src.styleName = style if roundness else f"{style} Sharp"
+            src.location = {"Weight": weight, "Roundness": roundness}
+            ds.addSource(src)
         inst = InstanceDescriptor()
-        inst.familyName, inst.styleName = FAMILY, style
-        inst.postScriptFontName = f"{PS_FAMILY}-{style}"
-        inst.location = {"Weight": weight}
+        inst.familyName, inst.styleName = family, style
+        inst.postScriptFontName = f"{ps_family}-{style}"
+        inst.location = {"Weight": weight, "Roundness": 100}
         ds.addInstance(inst)
 
     # GPOS lookups are structured differently per master, so they can't be merged.
     # Build without them and reuse Regular's kerning/mark positioning (static for now).
     default_gpos = fonts[0]["GPOS"]
-    for f in fonts:
+    for f in fonts + sharp_fonts:
         del f["GPOS"]
     vf, _, _ = varLib.build(ds)
     vf["GPOS"] = default_gpos
@@ -473,18 +655,26 @@ def main():
             {"value": 600, "name": "Semibold"},
             {"value": 700, "name": "Bold"},
         ],
+    }, {
+        "tag": "ROND", "name": "Roundness",
+        "values": [
+            {"value": 0, "name": "Sharp"},
+            {"value": 100, "name": "Round", "flags": 0x2},
+        ],
     }])
-    vf["name"].setName(f"{PS_FAMILY}", 25, 3, 1, 0x409)  # variations PostScript name prefix
+    vf["name"].setName(ps_family, 25, 3, 1, 0x409)  # variations PostScript name prefix
 
     out = ROOT / "fonts"
     out.mkdir(exist_ok=True)
-    ttf = out / f"{PS_FAMILY}[wght].ttf"
+    ttf = out / f"{ps_family}[ROND,wght].ttf"
     vf.save(ttf)
     vf.flavor = "woff2"
-    vf.save(out / f"{PS_FAMILY}[wght].woff2")
+    vf.save(out / f"{ps_family}[ROND,wght].woff2")
     print("wrote", ttf, "and .woff2")
+    n = write_glyph_index(vf, ROOT / "specimen" / "glyphs.json")
+    print(f"wrote specimen/glyphs.json ({n} glyphs)")
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(build())

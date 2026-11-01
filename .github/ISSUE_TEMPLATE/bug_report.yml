@@ -1,0 +1,30 @@
+name: Bug report
+description: A glyph renders wrong, an axis misbehaves, or the specimen site breaks.
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What's wrong
+      description: Which glyph, weight or roundness value, and what you expected instead.
+      placeholder: "At wght 650, ROND 0 the dot on i turns into a leaf shape."
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: How to see it
+      description: Text, CSS settings or steps that show the problem.
+      placeholder: |
+        font-weight: 650;
+        font-variation-settings: "ROND" 0;
+  - type: input
+    id: where
+    attributes:
+      label: Where
+      description: App or browser and OS.
+      placeholder: "Safari 19 on macOS 26"
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots

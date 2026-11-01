@@ -1,0 +1,15 @@
+name: Feature or glyph request
+description: Suggest a new axis value, glyph, OpenType feature or specimen improvement.
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: What you'd like
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it helps
+      description: What you're trying to set or build.

@@ -1,0 +1,13 @@
+{
+  "name": "Pollen",
+  "short_name": "Pollen",
+  "description": "A free variable typeface with weight and roundness axes.",
+  "start_url": "/specimen/",
+  "display": "standalone",
+  "background_color": "#f9f9fb",
+  "theme_color": "#f9f9fb",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

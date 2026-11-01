@@ -1,0 +1,6 @@
+# Pollen is a free, open-source font: everyone is welcome to read and cite it,
+# including search engines and AI answer engines.
+User-agent: *
+Allow: /
+
+Sitemap: https://pollen.nidheesh.dev/sitemap.xml

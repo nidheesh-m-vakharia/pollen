@@ -1,45 +1,46 @@
-# Open Runde Variable
+<p align="center">
+  <img src="assets/banner.png" alt="Pollen, a variable typeface with weight and roundness axes" width="100%">
+</p>
 
-A variable-font fork of [Open Runde](https://github.com/lauridskern/open-runde) 1.0.1, with one axis:
+# Pollen
 
-| Axis | Tag  | Range     | Default |
-|------|------|-----------|---------|
+A free variable typeface by Nidheesh Vakharia. One file, two axes:
+
+| Axis | Tag | Range | Default |
+|------|-----|-------|---------|
 | Weight | `wght` | 400–700 | 400 |
+| Roundness | `ROND` | 0–100 (sharp → soft) | 100 |
 
-Named instances: Regular, Medium, Semibold, Bold.
+## Built on Open Runde and Inter
 
-## Build
+Pollen is a modified version of **[Open Runde](https://github.com/lauridskern/open-runde)** by Laurids Kern, which is a rounded take on **[Inter](https://github.com/rsms/inter)** by Rasmus Andersson. The letterforms are theirs. Pollen joins Open Runde's four static weights into one variable font and adds a roundness axis.
 
-```sh
-pip install -r requirements.txt
-python3 scripts/build.py
+If you like Pollen, go star the originals. Neither author is affiliated with Pollen or endorses it.
+
+## Use it
+
+Grab [`fonts/Pollen[ROND,wght].woff2`](fonts/) (or the `.ttf` for desktop apps).
+
+```css
+@font-face {
+  font-family: "Pollen";
+  src: url("Pollen[ROND,wght].woff2") format("woff2");
+  font-weight: 400 700;
+}
+
+h1 {
+  font-family: "Pollen", sans-serif;
+  font-weight: 560;
+  font-variation-settings: "ROND" 40;
+}
 ```
 
-Outputs `fonts/OpenRundeVariable[wght].ttf` and `.woff2`.
+## License
 
-## How it works
+[SIL Open Font License 1.1](OFL.txt), the same license as Inter and Open Runde. You can use, modify and share Pollen, including in commercial work. You can't sell the font files on their own, and copies must keep the copyright notices and the license.
 
-The four static OTFs in `sources/` are used as masters. They were flattened per weight, so about a third
-of the glyphs have different node structures from one weight to the next. `scripts/build.py`:
+Copyright 2016 The Inter Project Authors · 2023 Laurids Kern · 2026 Nidheesh Vakharia
 
-1. Matches contours across masters and fixes direction and start points.
-2. Aligns nodes along each contour by normalised arc length, then splits segments wherever one master
-   has a node another lacks. Splitting doesn't change any master's shape.
-3. Converts the compatible cubics to TrueType quadratics with a single cu2qu conversion shared by all masters.
-4. Merges the masters with `fontTools.varLib` and adds STAT.
+---
 
-Each master instance matches its original static font within 2 font units.
-
-## Known limitations
-
-- GPOS (kerning and mark positioning) is structured differently in each master, so the font uses Regular's
-  GPOS at every weight.
-- 15 rare glyphs change contour topology between weights (Ⓦ, ₦, ₩, Ҋ, Ӎ, …). These stay at their
-  Regular shape.
-
-## Specimen
-
-```sh
-python3 -m http.server 8765
-open http://localhost:8765/specimen/
-```
+Building the font or working on the specimen site? See [CONTRIBUTING.md](CONTRIBUTING.md).

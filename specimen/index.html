@@ -1,131 +1,917 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="loading">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Open Runde Variable</title>
-<style>
-  @font-face {
-    font-family: "Open Runde Variable";
-    src: url("../fonts/OpenRundeVariable[wght].woff2") format("woff2-variations"),
-         url("../fonts/OpenRundeVariable[wght].woff2") format("woff2");
-    font-weight: 400 700;
-    font-display: block;
+<title>Pollen — free variable font with weight and roundness axes</title>
+<meta name="description" content="Pollen is a free, open-source variable typeface with weight (400–700) and roundness (0–100) axes, built from Open Runde and Inter. Licensed under the SIL OFL 1.1.">
+<meta name="author" content="Nidheesh Vakharia">
+<link rel="canonical" href="https://pollen.nidheesh.dev/specimen/">
+<meta name="theme-color" content="#f9f9fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#18191b" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pollen">
+<meta property="og:url" content="https://pollen.nidheesh.dev/specimen/">
+<meta property="og:title" content="Pollen — a free variable typeface">
+<meta property="og:description" content="Weight 400–700 and roundness 0–100 in one free, open-source font file. Built from Open Runde and Inter.">
+<meta property="og:image" content="https://pollen.nidheesh.dev/assets/banner.png">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="640">
+<meta property="og:image:alt" content="The word Pollen set in the typeface, shifting from light and round to heavy and sharp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Pollen — a free variable typeface">
+<meta name="twitter:description" content="Weight 400–700 and roundness 0–100 in one free, open-source font file.">
+<meta name="twitter:image" content="https://pollen.nidheesh.dev/assets/banner.png">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable summary">
+<link rel="preload" href="../fonts/Pollen[ROND,wght].woff2?v=1.000" as="font" type="font/woff2" crossorigin>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebSite",
+   "@id": "https://pollen.nidheesh.dev/#website",
+   "name": "Pollen",
+   "url": "https://pollen.nidheesh.dev/specimen/",
+   "inLanguage": "en"
+  },
+  {
+   "@type": "CreativeWork",
+   "@id": "https://pollen.nidheesh.dev/#font",
+   "name": "Pollen",
+   "genre": "Typeface",
+   "description": "A free, open-source variable typeface with weight (400–700) and roundness (0–100) axes.",
+   "url": "https://pollen.nidheesh.dev/specimen/",
+   "image": "https://pollen.nidheesh.dev/assets/banner.png",
+   "version": "1.000",
+   "datePublished": "2026-10-31",
+   "author": {
+    "@type": "Person",
+    "name": "Nidheesh Vakharia"
+   },
+   "license": "https://openfontlicense.org",
+   "isAccessibleForFree": true,
+   "encodingFormat": [
+    "font/woff2",
+    "font/ttf"
+   ],
+   "keywords": [
+    "variable font",
+    "typeface",
+    "rounded sans-serif",
+    "Open Runde",
+    "Inter",
+    "free font",
+    "OFL"
+   ],
+   "isBasedOn": [
+    {
+     "@type": "CreativeWork",
+     "name": "Open Runde",
+     "url": "https://github.com/lauridskern/open-runde",
+     "author": {
+      "@type": "Person",
+      "name": "Laurids Kern"
+     }
+    },
+    {
+     "@type": "CreativeWork",
+     "name": "Inter",
+     "url": "https://github.com/rsms/inter",
+     "author": {
+      "@type": "Person",
+      "name": "Rasmus Andersson"
+     }
+    }
+   ],
+   "codeRepository": "https://github.com/nidheesh-m-vakharia/pollen"
+  },
+  {
+   "@type": "FAQPage",
+   "@id": "https://pollen.nidheesh.dev/#faq",
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What is Pollen?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Pollen is a free, open-source variable typeface by Nidheesh Vakharia. One font file covers weight 400–700 and roundness 0–100, from sharp corners to soft ones."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is Pollen free for commercial use?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Pollen is licensed under the SIL Open Font License 1.1, so you can use it in personal and commercial work, including websites and apps. You can't sell the font files on their own, and copies must keep the copyright notices and the license."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is Pollen based on?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Pollen is built from Open Runde by Laurids Kern, a rounded take on Inter by Rasmus Andersson. Pollen joins Open Runde's four static weights into one variable font and adds a roundness axis."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does the roundness axis do?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The ROND axis runs from 0 to 100. At 100, the default, corners are fully rounded like Open Runde. At 0 they are sharp, close to Inter. Values in between blend the two."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do I use Pollen on a website?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Download Pollen[ROND,wght].woff2, load it with @font-face and font-weight: 400 700, then set font-weight for weight and font-variation-settings: \"ROND\" 0–100 for roundness."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which languages does Pollen support?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Pollen covers Latin (including accented letters), Greek and Cyrillic, with 2,494 characters."
+     }
+    }
+   ]
   }
+ ]
+}
+</script>
+<noscript><style>html.loading body { visibility: visible; }</style></noscript>
+<style>
+  /* the font is loaded by the script at the end, with a cache-busting URL */
+  html.loading body { visibility: hidden; }
+
+  /* Radix Colors: slate + slateA */
   :root {
-    --bg: #fbfaf8;
-    --fg: #1a1a19;
-    --muted: #6f6d68;
-    --line: #e6e3dd;
-    --accent: #3b5bdb;
+    --slate-1: #fcfcfd; --slate-2: #f9f9fb; --slate-3: #f0f0f3; --slate-4: #e8e8ec;
+    --slate-5: #e0e1e6; --slate-6: #d9d9e0; --slate-7: #cdced6; --slate-8: #b9bbc6;
+    --slate-9: #8b8d98; --slate-10: #80838d; --slate-11: #60646c; --slate-12: #1c2024;
+    --slate-a3: #0000330f; --slate-a5: #00093321; --slate-a7: #00062e32;
+
+    /* low-contrast roles: nothing sits at the ends of the scale */
+    --bg: var(--slate-2);
+    --surface: var(--slate-3);
+    --surface-2: var(--slate-4);
+    --raised: var(--slate-1);
+    --text-strong: color-mix(in oklab, var(--slate-12) 55%, var(--slate-11));
+    --text: var(--slate-11);
+    --text-muted: var(--slate-10);
+    --text-faint: var(--slate-9);
+
+    /* major second type scale (×1.125) on a 16px base */
+    --step--2: 0.79rem;    /* 12.6 */
+    --step--1: 0.889rem;   /* 14.2 */
+    --step-0: 1rem;        /* 16 */
+    --step-1: 1.125rem;    /* 18 */
+    --step-2: 1.266rem;    /* 20.3 */
+    --step-3: 1.424rem;    /* 22.8 */
+    --step-4: 1.602rem;    /* 25.6 */
+    --step-5: 1.802rem;    /* 28.8 */
+    --step-6: 2.027rem;    /* 32.4 */
+    --step-8: 2.566rem;    /* 41.1 */
+    --step-9: 2.887rem;    /* 46.2 */
+    --step-10: 3.247rem;   /* 52 */
+    --step-12: 4.11rem;    /* 65.8 */
+    --step-14: 5.202rem;   /* 83.2 */
+    --step-19: 9.365rem;   /* 149.8 */
+    --step-21: 11.81rem;   /* 189 */
+    --step-22: 13.29rem;   /* 212.6 */
+
     --w: 400;
+    --r: 100;
+    /* hierarchy follows the weight slider but stays heavier than body text */
+    --w-medium: min(700, calc(var(--w) + 100));
+    --w-strong: min(700, calc(var(--w) + 200));
+    --font: "Pollen", system-ui, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #0d1117; --fg: #e6edf3; --muted: #8b949e; --line: #21262d; --accent: #79a1ff; }
+    :root:not([data-theme="light"]) {
+      --slate-1: #111113; --slate-2: #18191b; --slate-3: #212225; --slate-4: #272a2d;
+      --slate-5: #2e3135; --slate-6: #363a3f; --slate-7: #43484e; --slate-8: #5a6169;
+      --slate-9: #696e77; --slate-10: #777b84; --slate-11: #b0b4ba; --slate-12: #edeef0;
+      --slate-a3: #ddeaf814; --slate-a5: #d3edf823; --slate-a7: #d9edfe40;
+      --raised: var(--slate-3);
+    }
   }
+  :root[data-theme="dark"] {
+    --slate-1: #111113; --slate-2: #18191b; --slate-3: #212225; --slate-4: #272a2d;
+    --slate-5: #2e3135; --slate-6: #363a3f; --slate-7: #43484e; --slate-8: #5a6169;
+    --slate-9: #696e77; --slate-10: #777b84; --slate-11: #b0b4ba; --slate-12: #edeef0;
+    --slate-a3: #ddeaf814; --slate-a5: #d3edf823; --slate-a7: #d9edfe40;
+    --raised: var(--slate-3);
+  }
+
+  /* registered so the Web Animations API can interpolate them (slider reset glides the whole page) */
+  @property --w { syntax: "<number>"; inherits: true; initial-value: 400; }
+  @property --r { syntax: "<number>"; inherits: true; initial-value: 100; }
+  @property --f { syntax: "<number>"; inherits: true; initial-value: 0; }
+
   * { box-sizing: border-box; }
-  html { -webkit-font-smoothing: antialiased; }
+  html { -webkit-font-smoothing: antialiased; font-synthesis: none; text-rendering: optimizeLegibility; }
   body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: "Open Runde Variable", system-ui, sans-serif;
-    font-weight: var(--w);
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--font); font-weight: var(--w); font-size: var(--step-0); line-height: 1.6;
+    font-variation-settings: "ROND" var(--r);
   }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 32px 24px 96px; }
+  ::selection { background: var(--text-strong); color: var(--bg); }
+  /* links get the same 2px rounded bar as the separators (native underlines can't round their ends) */
+  a { position: relative; display: inline-block; color: inherit; text-decoration: none; }
+  a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.12em; height: 2px; border-radius: 2px;
+    background: var(--slate-8); transition: background-color 150ms ease; }
+  a:hover::after { background: var(--text-strong); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--slate-8); outline-offset: 2px; border-radius: 4px; }
+  strong, b { font-weight: var(--w-strong); }
+  .hero, h1, h2, h3, h4, h5, h6, [class*="t-h"], .t-display, strong, b { color: var(--text-strong); }
 
-  header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;
-    padding-bottom: 20px; border-bottom: 1px solid var(--line); font-size: 15px; }
-  header .meta { color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; }
+  .page { max-width: 1040px; margin: 0 auto; padding: 0 24px 120px; }
 
-  .control { position: sticky; top: 0; z-index: 1; background: var(--bg);
-    display: grid; grid-template-columns: auto 1fr auto auto; gap: 16px; align-items: center;
-    padding: 16px 0; border-bottom: 1px solid var(--line); font-weight: 500; font-size: 14px; }
-  .control output { min-width: 3ch; text-align: right; font-variant-numeric: tabular-nums; font-size: 22px; font-weight: 600; }
-  .control input { width: 100%; accent-color: var(--accent); }
-  .control button { font: inherit; font-size: 13px; color: var(--fg); background: transparent;
-    border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; cursor: pointer; }
-  .control button:hover { border-color: var(--muted); }
+  /* ---------- separators: 2px bars with rounded ends */
+  .label, .scale li, .features li, .steps li { position: relative; }
+  .label::after, .scale li::after, .features li::after, .steps li::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px;
+    background: var(--sep, var(--slate-4)); pointer-events: none;
+  }
+  .label { --sep: var(--slate-5); }
+  .label h2 { margin: 0; font: inherit; color: inherit; letter-spacing: inherit; }
+  .label::after, .scale li::after, .features li::after, .steps li::after { transform-origin: left center; }
 
-  .hero { font-size: clamp(96px, 20vw, 248px); line-height: 0.95; letter-spacing: -0.035em;
-    margin: 48px 0 8px; }
-  .lede { font-size: clamp(22px, 3.2vw, 36px); line-height: 1.2; letter-spacing: -0.015em;
-    max-width: 22ch; margin: 0 0 56px; text-wrap: balance; }
+  /* ---------- controls */
+  .controls { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 32px; }
+  /* fill slider: the whole bar is the hit area; label and value sit inside it */
+  .control {
+    --h: 40px; --handle-w: 10px;
+    --track: var(--slate-a3); --fill: var(--slate-a5); --handle: var(--text-faint);
+    position: relative; height: var(--h); border-radius: 12px;
+  }
+  .control:hover { --fill: var(--slate-a7); --handle: var(--text-muted); }
+  .control:active { --handle: var(--text); }
+  .control-head {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    display: flex; justify-content: space-between; align-items: center; padding: 0 18px;
+    font-size: var(--step--1); line-height: 1; color: var(--text-muted);
+  }
+  .control-head output { color: var(--text-strong); font-weight: var(--w-medium); min-width: 4ch; text-align: right; }
 
-  h2 { font-size: 13px; font-weight: 500; color: var(--muted); margin: 64px 0 16px; letter-spacing: 0.01em; }
+  .slider {
+    --f: 0;
+    -webkit-appearance: none; appearance: none;
+    position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+    background: transparent; border-radius: inherit; cursor: ew-resize; touch-action: pan-y;
+  }
+  .slider::-webkit-slider-runnable-track {
+    height: var(--h); border-radius: 12px;
+    background: linear-gradient(to right,
+      var(--fill) calc(var(--handle-w) / 2 + (100% - var(--handle-w)) * var(--f)),
+      var(--track) calc(var(--handle-w) / 2 + (100% - var(--handle-w)) * var(--f)));
+  }
+  .slider::-moz-range-track { height: var(--h); border-radius: 12px; background: var(--track); }
+  .slider::-moz-range-progress { height: var(--h); border-radius: 12px 0 0 12px; background: var(--fill); }
+  /* the thumb is a wide invisible grip with a thin bar drawn in its centre */
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none;
+    width: var(--handle-w); height: var(--h); border: 0; border-radius: 0;
+    background: linear-gradient(var(--handle), var(--handle)) center / 2px 14px no-repeat;
+    transition: background-size 160ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .slider::-moz-range-thumb {
+    width: var(--handle-w); height: var(--h); border: 0; border-radius: 0;
+    background: linear-gradient(var(--handle), var(--handle)) center / 2px 14px no-repeat;
+    transition: background-size 160ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .slider:active::-webkit-slider-thumb { background-size: 2px 20px; }
+  .slider:active::-moz-range-thumb { background-size: 2px 20px; }
+  .slider:focus { outline: none; }
+  .slider:focus-visible { outline: 2px solid var(--slate-8); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) {
+    .slider::-webkit-slider-thumb, .slider::-moz-range-thumb { transition: none; }
+  }
 
-  .steps { display: grid; gap: 4px; }
-  .steps > div { display: grid; grid-template-columns: 56px 1fr; align-items: baseline; gap: 16px;
-    font-size: clamp(28px, 5vw, 56px); letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; }
-  .steps > div > span { font-size: 13px; color: var(--muted); font-weight: 400; font-variant-numeric: tabular-nums; letter-spacing: 0; }
+  /* ---------- section frame */
+  section { padding-top: 88px; }
+  .label { display: flex; justify-content: space-between; gap: 16px; margin: 0 0 28px; padding-bottom: 12px;
+    font-size: var(--step--1); line-height: 1.4; color: var(--text-muted); }
+  .meta { font-size: var(--step--2); line-height: 1.4; color: var(--text-faint); font-weight: 400; letter-spacing: 0; }
 
-  .glyphs { font-size: clamp(32px, 4.6vw, 52px); line-height: 1.25; letter-spacing: 0.02em; word-break: break-all; }
-  .body { columns: 2 320px; column-gap: 48px; font-size: 18px; line-height: 1.55; }
-  .body p { margin: 0 0 1em; }
-  .note { font-size: 14px; color: var(--muted); font-weight: 400; max-width: 64ch; line-height: 1.5; }
+  .credit { margin: 20px 0 0; font-size: var(--step--1); line-height: 1.4; color: var(--text-muted); }
+  .credit b { color: var(--text); font-weight: var(--w-medium); }
+  .intro { margin: 16px 0 0; max-width: 36em; font-size: var(--step-1); line-height: 1.55; color: var(--text); text-wrap: pretty; }
+  .hero { margin: 56px 0 0; font-size: min(19vw, var(--step-22)); line-height: 0.92; letter-spacing: -0.045em;
+    font-weight: var(--w); }
+
+  /* ---------- type scale */
+  .scale { margin: 0; padding: 0; list-style: none; }
+  .scale li { display: grid; grid-template-columns: 136px 1fr; gap: 24px; align-items: baseline; padding: 18px 0; }
+  .scale .meta b { display: block; font-weight: 500; color: var(--text-muted); }
+  .scale li > div:last-child { min-width: 0; overflow-wrap: anywhere; }
+
+  .t-display { font-size: var(--step-12); line-height: 1; letter-spacing: -0.04em; font-weight: var(--w-strong); }
+  .t-h1 { font-size: var(--step-10); line-height: 1.05; letter-spacing: -0.035em; font-weight: var(--w-strong); }
+  .t-h2 { font-size: var(--step-8); line-height: 1.1; letter-spacing: -0.03em; font-weight: var(--w-strong); }
+  .t-h3 { font-size: var(--step-6); line-height: 1.2; letter-spacing: -0.022em; font-weight: var(--w-strong); }
+  .t-h4 { font-size: var(--step-4); line-height: 1.25; letter-spacing: -0.017em; font-weight: var(--w-strong); }
+  .t-h5 { font-size: var(--step-2); line-height: 1.3; letter-spacing: -0.012em; font-weight: var(--w-strong); }
+  .t-h6 { font-size: var(--step-1); line-height: 1.4; letter-spacing: -0.006em; font-weight: var(--w-strong); }
+  .t-lead { font-size: var(--step-3); line-height: 1.45; letter-spacing: -0.012em; color: var(--text-muted); }
+  .t-body-lg { font-size: var(--step-1); line-height: 1.6; letter-spacing: -0.006em; }
+  .t-body { font-size: var(--step-0); line-height: 1.6; }
+  .t-small { font-size: var(--step--1); line-height: 1.55; }
+  .t-caption { font-size: var(--step--2); line-height: 1.45; color: var(--text-muted); }
+  .t-overline { font-size: var(--step--2); line-height: 1.3; letter-spacing: 0.1em; text-transform: uppercase;
+    font-weight: var(--w-medium); color: var(--text-muted); font-feature-settings: "case"; }
+  .t-button { font-size: var(--step--1); line-height: 1; font-weight: var(--w-medium); letter-spacing: -0.005em; }
+  .t-code { font-size: var(--step--1); font-feature-settings: "zero"; background: var(--surface-2); padding: 2px 6px; border-radius: 6px; }
+
+  /* ---------- article */
+  article { max-width: 620px; }
+  article > * { margin: 0; }
+  article h2 { text-wrap: balance; }
+  article .t-lead { margin-top: 20px; text-wrap: pretty; }
+  article p { margin-top: 1.1em; text-wrap: pretty; }
+  article h3 { margin-top: 1.8em; text-wrap: balance; }
+  article blockquote { margin: 1.8em 0 0; padding-left: 22px; position: relative; }
+  article blockquote::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px;
+    border-radius: 2px; background: var(--text-strong); }
+  article blockquote p { margin: 0; font-size: var(--step-3); line-height: 1.45; letter-spacing: -0.015em; text-wrap: balance; }
+
+  /* two-column text: real CSS columns, so the text flows from left to right */
+  .columns { margin-top: 88px; }
+  .columns .cols { margin-top: 20px; columns: 2 280px; column-gap: 48px; }
+  .columns .cols p { margin: 0 0 1em; text-wrap: pretty; break-inside: avoid; }
+
+  /* ---------- features */
+  .features { margin: 0; padding: 0; list-style: none; }
+  .features li { display: grid; grid-template-columns: 136px 1fr 1fr; gap: 24px; align-items: baseline;
+    padding: 16px 0; font-size: var(--step-5); letter-spacing: -0.01em; }
+  .features .off { color: var(--text-faint); }
+
+  /* ---------- weights and roundness */
+  .steps { margin: 0; padding: 0; list-style: none; }
+  .steps + .steps { margin-top: 24px; }
+  .steps li { display: grid; grid-template-columns: 136px 1fr; gap: 24px; align-items: baseline; padding: 10px 0;
+    font-size: min(7vw, var(--step-9)); line-height: 1.25; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; }
+
+  /* ---------- faq + footer */
+  .faq { margin: 0; padding: 0; list-style: none; max-width: 760px; }
+  .faq li { position: relative; padding: 20px 0; }
+  .faq li::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px;
+    background: var(--slate-4); transform-origin: left center; }
+  .faq h3 { margin: 0; }
+  .faq p { margin: 8px 0 0; max-width: 62ch; text-wrap: pretty; }
+  .site-footer { margin-top: 88px; display: grid; gap: 6px; font-size: var(--step--1); color: var(--text-muted); }
+  .site-footer p { margin: 0; }
+  .site-footer b { color: var(--text); font-weight: var(--w-medium); }
+
+  /* ---------- glyph table */
+  .filters { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+  .filter { font: inherit; font-size: var(--step--1); line-height: 1; height: 32px; padding: 0 12px; border: 0;
+    border-radius: 999px; background: transparent; color: var(--text-muted); cursor: pointer; }
+  .filter span { color: var(--text-faint); margin-left: 4px; }
+  .filter:hover { background: var(--slate-a3); color: var(--text); }
+  .filter[aria-pressed="true"] { background: var(--surface-2); color: var(--text-strong); font-weight: var(--w-medium); }
+
+  .glyph-view { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 16px; align-items: start; }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); gap: 2px;
+    max-height: 30rem; overflow: auto; overscroll-behavior: contain; padding: 6px;
+    border-radius: 14px; background: var(--surface); scrollbar-width: thin;
+  }
+  .cell { aspect-ratio: 1; display: grid; place-items: center; padding: 0; border: 0; border-radius: 9px;
+    background: transparent; color: var(--text); font: inherit; font-size: var(--step-5); line-height: 1; cursor: default; }
+  .cell:hover { background: var(--surface-2); color: var(--text-strong); }
+  .cell[aria-current="true"] { background: var(--raised); color: var(--text-strong); box-shadow: 0 0 0 1px var(--slate-6); }
+  .cell:focus-visible { outline: 2px solid var(--slate-8); outline-offset: -2px; }
+
+  .loupe { position: sticky; top: 24px; display: grid; gap: 12px; }
+  .loupe-stage { position: relative; height: 300px; overflow: hidden; border-radius: 14px; background: var(--surface);
+    display: grid; place-items: center; }
+  /* the line box equals ascender + descender (2728 + 680 of 2816 units), so the guides land exactly */
+  .loupe-em { position: relative; width: 100%; font-size: var(--step-21); line-height: calc(3408 / 2816);
+    text-align: center; color: var(--text-strong); }
+  .loupe-char { position: relative; z-index: 1; display: inline-block; white-space: pre; }
+  .hero .ch { display: inline-block; cursor: default; }
+  .cell { will-change: transform; }
+  .guide { position: absolute; left: 0; right: 0; height: 2px; margin-top: -1px; border-radius: 2px; background: var(--slate-5); }
+  .guide::after { content: attr(data-l); position: absolute; left: 14px; bottom: 4px;
+    font-size: var(--step--2); line-height: 1; color: var(--text-faint); font-weight: 400; letter-spacing: 0; }
+  .g-cap { top: calc(680 / 2816 * 1em); }
+  .g-x { top: calc(1192 / 2816 * 1em); }
+  .g-base { top: calc(2728 / 2816 * 1em); background: var(--slate-7); }
+  .g-desc { top: calc(3304 / 2816 * 1em); }
+  .loupe-info { margin: 0; padding: 4px 16px 12px; display: grid; gap: 8px; font-size: var(--step--1); }
+  .loupe-info div { display: grid; grid-template-columns: 72px 1fr; gap: 12px; }
+  .loupe-info dt { color: var(--text-faint); }
+  .loupe-info dd { margin: 0; color: var(--text); overflow-wrap: anywhere; }
+
+  @media (max-width: 720px) {
+    .page { padding: 0 16px 80px; }
+    section { padding-top: 64px; }
+    .controls { margin-top: 24px; gap: 8px; }
+    .control-head { padding: 0 14px; }
+    .scale li, .steps li { grid-template-columns: 1fr; gap: 6px; }
+    .features li { grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: var(--step-3); }
+    .features li .meta { grid-column: 1 / -1; }
+    .t-display { font-size: var(--step-10); }
+    .t-h1 { font-size: var(--step-8); }
+    .t-h2 { font-size: var(--step-6); }
+    .glyph-view { grid-template-columns: 1fr; }
+    .loupe { order: -1; position: static; grid-template-columns: 1fr; }
+    .loupe-stage { height: 232px; }
+    .loupe-em { font-size: var(--step-19); }
+    .grid { max-height: 22rem; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
+    .cell { font-size: var(--step-4); }
+  }
 </style>
 </head>
 <body>
-<div class="wrap">
-  <header>
-    <div>Open Runde Variable</div>
-    <div class="meta">wght 400 – 700 · fork of Open Runde 1.0.1</div>
-  </header>
+<main class="page">
 
-  <div class="control">
-    <label for="w">Weight</label>
-    <input id="w" type="range" min="400" max="700" step="1" value="400">
-    <output id="wv" for="w">400</output>
-    <button id="play" type="button">Animate</button>
+  <h1 class="hero">Pollen</h1>
+  <p class="credit">By <b>Nidheesh Vakharia</b></p>
+  <p class="intro">Pollen is a free, open-source typeface with two dials: weight, from Regular to Bold, and roundness, from crisp corners to soft ones. It grows out of <a href="https://github.com/lauridskern/open-runde">Open Runde</a>, the rounded take on Inter, which only came as four separate weights. Pollen joins them into one variable file, fills in every weight in between, and adds roundness, so a single font can go from sharp to soft.</p>
+
+  <div class="controls">
+    <div class="control">
+      <div class="control-head"><label for="w">Weight</label><output id="wv" for="w">400</output></div>
+      <input class="slider" id="w" type="range" min="400" max="700" step="1" value="400" autocomplete="off">
+    </div>
+    <div class="control">
+      <div class="control-head"><label for="r">Roundness</label><output id="rv" for="r">100</output></div>
+      <input class="slider" id="r" type="range" min="0" max="100" step="1" value="100" autocomplete="off">
+    </div>
   </div>
 
-  <div class="hero">Runde</div>
-  <p class="lede">Soft corners, one file, every weight in between.</p>
+  <!-- ===================================================== type scale -->
+  <section>
+    <div class="label"><h2>Type scale</h2><span>Major second · ×1.125 · 16px base</span></div>
+    <ul class="scale">
+      <li><div class="meta"><b>Display</b>65.8 / 1.0</div><div class="t-display">Small things carry far</div></li>
+      <li><div class="meta"><b>Heading 1</b>52 / 1.05</div><div class="t-h1">A grain of pollen weighs almost nothing</div></li>
+      <li><div class="meta"><b>Heading 2</b>41.1 / 1.1</div><div class="t-h2">It still crosses fields, rivers and cities</div></li>
+      <li><div class="meta"><b>Heading 3</b>32.4 / 1.2</div><div class="t-h3">Wind, water and wings do the work</div></li>
+      <li><div class="meta"><b>Heading 4</b>25.6 / 1.25</div><div class="t-h4">One bee visits thousands of flowers a day</div></li>
+      <li><div class="meta"><b>Heading 5</b>20.3 / 1.3</div><div class="t-h5">Most grains measure 15 to 100 microns</div></li>
+      <li><div class="meta"><b>Heading 6</b>18 / 1.4</div><div class="t-h6">The outer wall is called the exine</div></li>
+      <li><div class="meta"><b>Lead</b>22.8 / 1.45</div><div class="t-lead">Pollen is how most plants move their genes from one flower to another, and it has been doing so for over 300 million years.</div></li>
+      <li><div class="meta"><b>Body large</b>18 / 1.6</div><div class="t-body-lg">Each grain is a tiny capsule. Its hard shell protects the cells inside from sunlight, drought and time, which is why pollen survives in lake mud for millennia.</div></li>
+      <li><div class="meta"><b>Body</b>16 / 1.6</div><div class="t-body">Scientists read those layers of mud like pages. By counting grains of oak, pine and grass, they can tell what a landscape looked like ten thousand years ago.</div></li>
+      <li><div class="meta"><b>Small</b>14.2 / 1.55</div><div class="t-small">Pollen counts are reported in grains per cubic metre of air, averaged over 24 hours.</div></li>
+      <li><div class="meta"><b>Caption</b>12.6 / 1.45</div><div class="t-caption">Fig. 3 — Sunflower pollen under a scanning electron microscope, magnified 2,000×.</div></li>
+      <li><div class="meta"><b>Overline</b>12.6 / 1.3</div><div class="t-overline">Botany · Field notes · No. 14</div></li>
+      <li><div class="meta"><b>Button</b>14.2 / 1.0</div><div class="t-button">Download specimen</div></li>
+      <li><div class="meta"><b>Code</b>14.2 / 1.6</div><div><span class="t-code">font-variation-settings: "ROND" 40;</span></div></li>
+    </ul>
+  </section>
 
-  <h2>Continuous — every 50 units</h2>
-  <div class="steps" id="steps"></div>
+  <!-- ===================================================== article -->
+  <section>
+    <div class="label"><h2>Long-form text</h2><span>Article</span></div>
+    <article>
+      <h2 class="t-h1">How a meadow keeps its own diary</h2>
+      <p class="t-lead">Every spring, a fine yellow layer settles on ponds and lakes. Most of it sinks, and the record it leaves can last for thousands of years.</p>
+      <p class="t-body">That layer is pollen. Each year it is buried by mud and more pollen, and over centuries the thin layers stack up into an <strong>archive of the plants that grew nearby</strong>.</p>
 
-  <h2>Glyphs that needed outline repair to interpolate</h2>
-  <div class="glyphs">R e æ Ã Ñ Õ Ø ŵ Ŧ ǅ ẞ ğ ł ő ƛ ̛ ơ ư Ж Щ ю ₹ € £ @ &amp; ¶ § ※ → ⇄</div>
+      <h3 class="t-h2">Reading the layers</h3>
+      <p class="t-body">Every species makes a grain with its own shape. Count the grains in each layer, and you can tell what the landscape looked like long ago.</p>
 
-  <h2>Text</h2>
-  <div class="body">
-    <p>Open Runde is a soft, rounded take on Inter. It shipped as four static weights; this fork stitches them back together into one variable font with a single weight axis, so the space between Regular and Bold is no longer empty.</p>
-    <p>Each master was flattened on its own, so node counts drifted between weights. The build aligns nodes along every contour by arc length and splits segments where one weight has a point the others lack — the masters' shapes are reproduced exactly, and the in-between weights interpolate smoothly.</p>
-    <p>0123456789 — The quick brown fox jumps over the lazy dog. Sphinx of black quartz, judge my vow. ¿Qué pasa? Größe, façade, naïve, Ångström.</p>
-  </div>
+      <blockquote>
+        <p>“The mud doesn’t forget. It just waits for someone to ask the right question.”</p>
+      </blockquote>
+    </article>
 
-  <h2>Notes</h2>
-  <p class="note">Kerning and mark positioning come from Regular at every weight for now. 15 rare glyphs whose contour topology changes between weights (e.g. Ⓦ, ₦, ₩, Ҋ) stay at their Regular shape.</p>
-</div>
+    <div class="columns">
+      <h3 class="t-h3">From grain to forecast</h3>
+      <div class="cols t-body">
+        <p>Pollen does more than record the past. The same grains that settle in lakes also drift through city air every spring, and counting them tells people with hay fever what kind of day to expect.</p>
+        <p>Traps on rooftops pull in a steady stream of air and catch whatever floats past on a sticky strip. Each morning someone counts the grains under a microscope and sorts them by plant.</p>
+        <p>Birch tends to peak first, then oak and grasses follow as the weather warms. A dry, windy week can carry grains for hundreds of kilometres before they come down.</p>
+        <p>Rain does the opposite. It washes the air clean, which is why the hour after a shower is often the easiest time of the day to be outside.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================== features -->
+  <section>
+    <div class="label"><h2>Numbers and OpenType</h2><span>Off / on</span></div>
+    <ul class="features">
+      <li><span class="meta">Slashed zero<br>zero</span><span class="off">ID 10203040</span><span style="font-feature-settings:'zero'">ID 10203040</span></li>
+      <li><span class="meta">Fractions<br>frac</span><span class="off">1/2 3/4 5/8</span><span style="font-feature-settings:'frac'">1/2 3/4 5/8</span></li>
+      <li><span class="meta">Ordinals<br>ordn</span><span class="off">1a 2o No.</span><span style="font-feature-settings:'ordn'">1a 2o No.</span></li>
+      <li><span class="meta">Case forms<br>case</span><span class="off">(HELLO)-[WORLD]</span><span style="font-feature-settings:'case'">(HELLO)-[WORLD]</span></li>
+      <li><span class="meta">Superscripts</span><span>E = mc² · H₂O</span><span>x³ + y³ ≠ z³</span></li>
+      <li><span class="meta">Figures</span><span>$1,204.50 · €38</span><span>31.10.2026 · 14:05</span></li>
+    </ul>
+  </section>
+
+  <!-- ===================================================== axes -->
+  <section>
+    <div class="label"><h2>Axes</h2><span>wght 400–700 · ROND 0–100</span></div>
+    <ul class="steps" data-axis="wght"></ul>
+    <ul class="steps" data-axis="ROND"></ul>
+  </section>
+
+  <!-- ===================================================== glyphs -->
+  <section>
+    <div class="label"><h2>Glyphs</h2><span id="glyph-count"></span></div>
+    <div class="filters" id="filters" role="group" aria-label="Filter glyphs"></div>
+    <div class="glyph-view">
+      <div class="grid" id="grid" role="group" aria-label="Glyphs"></div>
+      <aside class="loupe" aria-live="polite">
+        <div class="loupe-stage">
+          <div class="loupe-em">
+            <span class="guide g-cap" data-l="Cap height"></span>
+            <span class="guide g-x" data-l="x-height"></span>
+            <span class="guide g-base" data-l="Baseline"></span>
+            <span class="guide g-desc" data-l="Descender"></span>
+            <span class="loupe-char" id="lc"></span>
+          </div>
+        </div>
+        <dl class="loupe-info">
+          <div><dt>Name</dt><dd id="ln"></dd></div>
+          <div><dt>Unicode</dt><dd id="lu"></dd></div>
+          <div><dt>Glyph</dt><dd id="lg"></dd></div>
+          <div><dt>Group</dt><dd id="lgr"></dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===================================================== faq -->
+  <section>
+    <div class="label"><h2>Questions</h2><span>About Pollen</span></div>
+    <ul class="faq">
+      <li><h3 class="t-h5">What is Pollen?</h3><p>Pollen is a free, open-source variable typeface by Nidheesh Vakharia. One font file covers weight 400–700 and roundness 0–100, from sharp corners to soft ones.</p></li>
+      <li><h3 class="t-h5">Is Pollen free for commercial use?</h3><p>Yes. Pollen is licensed under the SIL Open Font License 1.1, so you can use it in personal and commercial work, including websites and apps. You can't sell the font files on their own, and copies must keep the copyright notices and the license.</p></li>
+      <li><h3 class="t-h5">What is Pollen based on?</h3><p>Pollen is built from Open Runde by Laurids Kern, a rounded take on Inter by Rasmus Andersson. Pollen joins Open Runde's four static weights into one variable font and adds a roundness axis.</p></li>
+      <li><h3 class="t-h5">What does the roundness axis do?</h3><p>The ROND axis runs from 0 to 100. At 100, the default, corners are fully rounded like Open Runde. At 0 they are sharp, close to Inter. Values in between blend the two.</p></li>
+      <li><h3 class="t-h5">How do I use Pollen on a website?</h3><p>Download Pollen[ROND,wght].woff2, load it with @font-face and font-weight: 400 700, then set font-weight for weight and font-variation-settings: "ROND" 0–100 for roundness.</p></li>
+      <li><h3 class="t-h5">Which languages does Pollen support?</h3><p>Pollen covers Latin (including accented letters), Greek and Cyrillic, with 2,494 characters.</p></li>
+    </ul>
+  </section>
+
+  <footer class="site-footer">
+    <p><b>Pollen 1.0</b> by Nidheesh Vakharia. Built on <a href="https://github.com/lauridskern/open-runde">Open Runde</a> by Laurids Kern and <a href="https://github.com/rsms/inter">Inter</a> by Rasmus Andersson.</p>
+    <p><a href="../fonts/Pollen[ROND,wght].woff2" download>Download WOFF2</a> · <a href="../fonts/Pollen[ROND,wght].ttf" download>Download TTF</a> · <a href="../OFL.txt">SIL OFL 1.1</a> · <a href="https://github.com/nidheesh-m-vakharia/pollen">Source</a></p>
+  </footer>
+</main>
 
 <script>
   const root = document.documentElement;
-  const input = document.getElementById("w");
-  const out = document.getElementById("wv");
-  const set = (v) => { root.style.setProperty("--w", v); out.value = Math.round(v); input.value = v; };
-  input.addEventListener("input", () => { stop(); set(+input.value); });
+  // during local development every load fetches fresh files; in production the CDN revalidates them
+  const LOCAL = ["localhost", "127.0.0.1"].includes(location.hostname);
+  const bust = LOCAL ? Date.now() : "1.000";
 
-  const steps = document.getElementById("steps");
-  for (let w = 400; w <= 700; w += 50) {
-    const row = document.createElement("div");
-    row.innerHTML = `<span>${w}</span><div style="font-weight:${w}">Hamburgefonstiv 0123</div>`;
-    steps.append(row);
+  // load the font fresh on every visit, so a rebuilt font is never shadowed by a cached copy
+  const face = new FontFace("Pollen", `url("../fonts/Pollen[ROND,wght].woff2?v=${bust}")`, { weight: "400 700" });
+  document.fonts.add(face);
+
+  // ---------- motion settings (Web Animations API)
+  const MOTION = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const FINE_HOVER = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const EASE_OUT = "cubic-bezier(0.32, 0.72, 0, 1)";
+  const EASE_IN_OUT = "cubic-bezier(0.65, 0, 0.35, 1)";
+  const rand = (a, b) => a + Math.random() * (b - a);
+
+  // ---------- sliders
+  const cur = { w: 400, r: 100 };
+  const sliders = {};
+  for (const [key, prop] of [["w", "--w"], ["r", "--r"]]) {
+    const input = document.getElementById(key);
+    const out = document.getElementById(key + "v");
+    const frac = (v) => (v - input.min) / (input.max - input.min);
+    const set = (v) => {
+      cur[key] = +v;
+      input.value = v;
+      input.style.setProperty("--f", frac(v));
+      root.style.setProperty(prop, v);
+      out.value = Math.round(v);
+    };
+    input.addEventListener("input", () => set(+input.value));
+    // double-click glides back to the default: the registered custom property tweens the whole page
+    input.addEventListener("dblclick", () => {
+      const from = cur[key];
+      const to = +input.defaultValue;
+      if (!MOTION || from === to) return set(to);
+      const timing = { duration: 650, easing: EASE_IN_OUT };
+      const anim = root.animate([{ [prop]: from }, { [prop]: to }], timing);
+      input.animate([{ "--f": frac(from) }, { "--f": frac(to) }], timing);
+      set(to);
+      const tick = () => {
+        const p = anim.effect.getComputedTiming().progress;
+        if (p == null) return void (out.value = to);
+        out.value = Math.round(from + (to - from) * p);
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+    // always open at the defaults, even if the browser restored a dragged value on reload
+    set(+input.defaultValue);
+    sliders[key] = { set };
   }
 
-  let raf = null;
-  const btn = document.getElementById("play");
-  function stop() { if (raf) cancelAnimationFrame(raf); raf = null; btn.textContent = "Animate"; }
-  btn.addEventListener("click", () => {
-    if (raf) return stop();
-    btn.textContent = "Stop";
-    const t0 = performance.now();
-    const tick = (t) => {
-      const p = (1 - Math.cos(((t - t0) / 2400) * Math.PI)) / 2;
-      set(400 + 300 * p);
-      raf = requestAnimationFrame(tick);
+  // ---------- axis rows
+  const sample = "Soft rounded type 0123";
+  const rows = {
+    wght: [400, 500, 600, 700].map((v) => [`Weight ${v}`, { fontWeight: v }]),
+    ROND: [0, 50, 100].map((v) => [`Roundness ${v}`, { fontVariationSettings: `"ROND" ${v}` }]),
+  };
+  for (const list of document.querySelectorAll(".steps")) {
+    for (const [name, style] of rows[list.dataset.axis]) {
+      const li = document.createElement("li");
+      const label = document.createElement("span");
+      label.className = "meta";
+      label.textContent = name;
+      const text = document.createElement("div");
+      Object.assign(text.style, style);
+      text.textContent = sample;
+      li.append(label, text);
+      list.append(li);
+    }
+  }
+
+  // ---------- hero: split into letters (screen readers still get one word)
+  const hero = document.querySelector(".hero");
+  const word = hero.textContent;
+  hero.setAttribute("aria-label", word);
+  hero.textContent = "";
+  const letters = [...word].map((c) => {
+    const span = document.createElement("span");
+    span.className = "ch";
+    span.setAttribute("aria-hidden", "true");
+    span.textContent = c;
+    hero.append(span);
+    return span;
+  });
+
+  // ---------- glyph table
+  const grid = document.getElementById("grid");
+  const filters = document.getElementById("filters");
+  const loupe = {
+    char: document.getElementById("lc"), name: document.getElementById("ln"),
+    code: document.getElementById("lu"), glyph: document.getElementById("lg"), group: document.getElementById("lgr"),
+  };
+  let glyphs = [];
+  let shown = [];
+  let selected = null;
+
+  const hex = (cp) => "U+" + cp.toString(16).toUpperCase().padStart(4, "0");
+  // combining marks need a base to sit on; a no-break space keeps them visible on their own
+  const display = ([cp, , , group]) => (group === "Marks" ? " " : "") + String.fromCodePoint(cp);
+  const title = (name) => name ? name.toLowerCase().replace(/^./, (c) => c.toUpperCase()) : "—";
+
+  function show(g, animate = false) {
+    const changed = loupe.char.textContent !== display(g);
+    loupe.char.textContent = display(g);
+    loupe.name.textContent = title(g[2]);
+    loupe.code.textContent = hex(g[0]);
+    loupe.glyph.textContent = g[1];
+    loupe.group.textContent = g[3];
+    if (animate && changed && MOTION) {
+      loupe.char.animate(
+        [{ opacity: 0.3, transform: "translateY(4%) scale(0.96)" }, { opacity: 1, transform: "none" }],
+        { duration: 220, easing: EASE_OUT },
+      );
+    }
+  }
+
+  function select(cell, { pulse = false } = {}) {
+    grid.querySelector('[aria-current="true"]')?.removeAttribute("aria-current");
+    grid.querySelector('[tabindex="0"]')?.setAttribute("tabindex", "-1");
+    cell.setAttribute("aria-current", "true");
+    cell.tabIndex = 0;
+    selected = shown[+cell.dataset.i];
+    show(selected);
+    // a click sends the magnified glyph through the whole weight range and back
+    if (pulse && MOTION) {
+      loupe.char.animate(
+        [{ fontWeight: cur.w }, { fontWeight: 700, transform: "scale(1.04)", offset: 0.4 }, { fontWeight: cur.w }],
+        { duration: 720, easing: EASE_IN_OUT },
+      );
+    }
+  }
+
+  function render(group, { scatter = false } = {}) {
+    shown = group === "All" ? glyphs : glyphs.filter((g) => g[3] === group);
+    const frag = document.createDocumentFragment();
+    shown.forEach((g, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "cell";
+      b.tabIndex = -1;
+      b.dataset.i = i;
+      b.textContent = display(g);
+      b.setAttribute("aria-label", `${title(g[2])}, ${hex(g[0])}`);
+      frag.append(b);
+    });
+    grid.replaceChildren(frag);
+    grid.scrollTop = 0;
+    const keep = shown.indexOf(selected);
+    select(grid.children[keep >= 0 ? keep : 0]);
+    // new glyphs drift in like scattered pollen (only the ones you can see)
+    if (scatter && MOTION) {
+      [...grid.children].slice(0, 80).forEach((cell, i) => {
+        cell.animate(
+          [{ opacity: 0, transform: `translate(${rand(-16, 16)}px, ${rand(8, 22)}px) scale(0.8) rotate(${rand(-12, 12)}deg)` },
+           { opacity: 1, transform: "none" }],
+          { duration: 560, delay: rand(0, 200) + (i % 10) * 8, easing: EASE_OUT, fill: "backwards" },
+        );
+      });
+    }
+  }
+
+  grid.addEventListener("pointerover", (e) => {
+    const cell = e.target.closest(".cell");
+    if (!cell) return;
+    show(shown[+cell.dataset.i], true);
+    if (MOTION && FINE_HOVER) {
+      cell.animate([{ transform: "scale(1.18)" }], { duration: 160, easing: EASE_OUT, fill: "forwards" });
+    }
+  });
+  grid.addEventListener("pointerout", (e) => {
+    const cell = e.target.closest(".cell");
+    if (!cell || !MOTION || !FINE_HOVER || cell.contains(e.relatedTarget)) return;
+    const back = cell.animate([{ transform: "none" }], { duration: 220, easing: EASE_OUT, fill: "forwards" });
+    back.onfinish = () => cell.getAnimations().forEach((a) => a.cancel());
+  });
+  grid.addEventListener("pointerleave", () => selected && show(selected, true));
+  grid.addEventListener("click", (e) => {
+    const cell = e.target.closest(".cell");
+    if (cell) select(cell, { pulse: true });
+  });
+  // keyboard moves stay instant: no animation on arrow-key navigation
+  grid.addEventListener("keydown", (e) => {
+    const cell = e.target.closest(".cell");
+    if (!cell) return;
+    const cols = getComputedStyle(grid).gridTemplateColumns.split(" ").length;
+    const i = +cell.dataset.i;
+    const next = { ArrowRight: i + 1, ArrowLeft: i - 1, ArrowDown: i + cols, ArrowUp: i - cols,
+      Home: 0, End: shown.length - 1 }[e.key];
+    if (next === undefined) return;
+    e.preventDefault();
+    const target = grid.children[Math.max(0, Math.min(shown.length - 1, next))];
+    select(target);
+    target.focus();
+  });
+
+  fetch(`glyphs.json?v=${bust}`).then((r) => r.json()).then((data) => {
+    glyphs = data.glyphs;
+    selected = glyphs.find((g) => g[0] === 0x61) || glyphs[0];
+    document.getElementById("glyph-count").textContent = `${glyphs.length.toLocaleString()} characters`;
+    const counts = Object.fromEntries(data.groups.map((k) => [k, 0]));
+    for (const g of glyphs) counts[g[3]]++;
+    const groups = ["All", ...data.groups.filter((k) => counts[k])];
+    for (const k of groups) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "filter";
+      b.setAttribute("aria-pressed", k === "All");
+      b.innerHTML = `${k}<span>${(k === "All" ? glyphs.length : counts[k]).toLocaleString()}</span>`;
+      b.addEventListener("click", () => {
+        if (b.getAttribute("aria-pressed") === "true") return;
+        filters.querySelector('[aria-pressed="true"]').setAttribute("aria-pressed", "false");
+        b.setAttribute("aria-pressed", "true");
+        render(k, { scatter: true });
+      });
+      filters.append(b);
+    }
+    render("All");
+  });
+
+  // ---------- entry choreography
+  const rise = (el, delay, distance = 14) => el.animate(
+    [{ opacity: 0, transform: `translateY(${distance}px)` }, { opacity: 1, transform: "none" }],
+    { duration: 680, delay, easing: EASE_OUT, fill: "backwards" },
+  );
+
+  function intro() {
+    if (!MOTION) return;
+    // the hero blooms: each letter rises from heavy and sharp into the current weight and roundness
+    letters.forEach((el, i) => {
+      el.animate(
+        [{ opacity: 0, transform: "translateY(0.2em)", fontWeight: 700, fontVariationSettings: '"ROND" 0' },
+         { opacity: 1, transform: "none", fontWeight: cur.w, fontVariationSettings: `"ROND" ${cur.r}` }],
+        { duration: 1200, delay: 80 + i * 75, easing: EASE_OUT, fill: "backwards" },
+      );
+    });
+    rise(document.querySelector(".credit"), 520, 8);
+    rise(document.querySelector(".intro"), 600, 10);
+    document.querySelectorAll(".control").forEach((el, i) => rise(el, 700 + i * 70, 10));
+  }
+
+  // sections: separators draw in from the left, then rows rise one after another
+  function prepareReveals() {
+    if (!MOTION || !("IntersectionObserver" in window)) return;
+    const timing = (delay, duration = 680) => ({ duration, delay, easing: EASE_OUT, fill: "both" });
+    const held = new Map();
+    for (const section of document.querySelectorAll("section")) {
+      const anims = [];
+      const label = section.querySelector(".label");
+      anims.push(label.animate([{ opacity: 0 }, { opacity: 1 }], timing(0, 500)));
+      anims.push(label.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
+        { ...timing(0, 900), pseudoElement: "::after" }));
+      const items = section.querySelectorAll(".scale > li, article > *, .columns > h3, .cols > p, .features > li, .steps > li, .faq > li, .filters, .glyph-view");
+      items.forEach((el, i) => {
+        const delay = 120 + Math.min(i, 10) * 60;
+        anims.push(el.animate([{ opacity: 0, transform: "translateY(16px)" }, { opacity: 1, transform: "none" }], timing(delay)));
+        if (el.matches("li")) {
+          anims.push(el.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
+            { ...timing(delay + 80, 800), pseudoElement: "::after" }));
+        }
+        // axis rows act out their axis: weights grow in, roundness sharpens in
+        const sampleText = el.matches(".steps > li") && el.lastElementChild;
+        if (sampleText) {
+          const from = el.parentElement.dataset.axis === "wght"
+            ? { fontWeight: 400 } : { fontVariationSettings: '"ROND" 100' };
+          anims.push(sampleText.animate([from, {}], timing(delay + 150, 1100)));
+        }
+      });
+      anims.forEach((a) => { a.pause(); a.onfinish = () => a.cancel(); });
+      held.set(section, anims);
+    }
+    const io = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        held.get(entry.target).forEach((a) => a.play());
+        io.unobserve(entry.target);
+      }
+    }, { rootMargin: "0px 0px -12% 0px", threshold: 0.05 });
+    held.forEach((_, section) => io.observe(section));
+  }
+
+  // ---------- hover play
+  function hoverPlay() {
+    if (!MOTION || !FINE_HOVER) return;
+
+    // hero swell: letters near the cursor gain weight and lift, like a wave under a lens
+    let frame = 0;
+    let pointerX = 0;
+    const swell = () => {
+      frame = 0;
+      const reach = parseFloat(getComputedStyle(hero).fontSize) * 0.75;  // same wave width for wide and narrow letters
+      letters.forEach((el) => {
+        const box = el.getBoundingClientRect();
+        const k = Math.max(0, 1 - Math.abs(pointerX - (box.left + box.width / 2)) / reach);
+        el.animate(
+          [{ fontWeight: cur.w + (700 - cur.w) * k, transform: `translateY(${(-0.035 * k).toFixed(3)}em)` }],
+          { duration: 280, easing: EASE_OUT, fill: "forwards" },
+        );
+      });
     };
-    raf = requestAnimationFrame(tick);
+    hero.addEventListener("pointermove", (e) => {
+      pointerX = e.clientX;
+      frame ||= requestAnimationFrame(swell);
+    });
+    hero.addEventListener("pointerleave", () => {
+      cancelAnimationFrame(frame);
+      frame = 0;
+      letters.forEach((el) => {
+        const settle = el.animate([{ fontWeight: cur.w, transform: "none" }],
+          { duration: 420, easing: EASE_OUT, fill: "forwards" });
+        settle.onfinish = () => el.getAnimations().forEach((a) => a.cancel());
+      });
+    });
+    // click a letter: it snaps sharp and springs back round (or the reverse, if the page is sharp)
+    letters.forEach((el) => el.addEventListener("click", () => {
+      const away = cur.r > 50 ? 0 : 100;
+      el.animate(
+        [{ fontVariationSettings: `"ROND" ${cur.r}`, scale: 1 },
+         { fontVariationSettings: `"ROND" ${away}`, scale: 1.06, offset: 0.35 },
+         { fontVariationSettings: `"ROND" ${cur.r}`, scale: 1 }],
+        { duration: 700, easing: EASE_IN_OUT },
+      );
+    }));
+
+    // type scale rows: the sample leans a little heavier while hovered
+    for (const li of document.querySelectorAll(".scale > li")) {
+      const text = li.lastElementChild.firstElementChild || li.lastElementChild;
+      li.addEventListener("pointerenter", () => {
+        const base = parseFloat(getComputedStyle(text).fontWeight);
+        text.animate([{ fontWeight: Math.min(700, base + 120) }], { duration: 220, easing: EASE_OUT, fill: "forwards" });
+      });
+      li.addEventListener("pointerleave", () => {
+        text.getAnimations().forEach((a) => a.cancel());
+        const base = parseFloat(getComputedStyle(text).fontWeight);
+        text.animate([{ fontWeight: Math.min(700, base + 120) }, { fontWeight: base }], { duration: 260, easing: EASE_OUT });
+      });
+    }
+  }
+
+  // the page is hidden until the font is ready, so motion starts with the real letterforms
+  prepareReveals();
+  hoverPlay();
+  face.load().catch(() => {}).finally(() => {
+    root.classList.remove("loading");
+    intro();
   });
 </script>
 </body>

@@ -1,0 +1,39 @@
+# Pollen
+
+> Pollen is a free, open-source variable typeface by Nidheesh Vakharia. One font file covers weight 400–700 (`wght`) and roundness 0–100 (`ROND`, from sharp to soft corners). It is a modified version of Open Runde by Laurids Kern, which is a rounded take on Inter by Rasmus Andersson. Licensed under the SIL Open Font License 1.1.
+
+Key facts:
+
+- Axes: `wght` 400–700 (default 400; named instances Regular, Medium, Semibold, Bold) and `ROND` 0–100 (default 100, fully rounded; 0 gives sharp, Inter-like corners).
+- Scripts: Latin (including accented letters), Greek and Cyrillic; 2,494 encoded characters.
+- OpenType features: `case`, `frac`, `ordn`, `zero`, and kerning.
+- Formats: WOFF2 for the web, TTF for desktop apps.
+- License: SIL OFL 1.1. Free for personal and commercial use, including embedding in websites and apps. The font files may not be sold on their own, and copies must keep the copyright notices and the license.
+- Credits: letterforms by Rasmus Andersson (Inter) and Laurids Kern (Open Runde); variable build and roundness axis by Nidheesh Vakharia. The original authors are not affiliated with Pollen.
+
+Usage on the web:
+
+```css
+@font-face {
+  font-family: "Pollen";
+  src: url("Pollen[ROND,wght].woff2") format("woff2");
+  font-weight: 400 700;
+}
+body { font-family: "Pollen", sans-serif; font-weight: 450; font-variation-settings: "ROND" 60; }
+```
+
+## Docs
+
+- [Specimen](https://pollen.nidheesh.dev/specimen/): live weight and roundness controls, type scale, glyph table
+- [Source code and README](https://github.com/nidheesh-m-vakharia/pollen): build scripts, changelog, contributing guide
+- [License (OFL.txt)](https://pollen.nidheesh.dev/OFL.txt): full SIL Open Font License 1.1 text with copyright notices
+
+## Downloads
+
+- [Pollen[ROND,wght].woff2](https://pollen.nidheesh.dev/fonts/Pollen%5BROND,wght%5D.woff2): variable font for the web
+- [Pollen[ROND,wght].ttf](https://pollen.nidheesh.dev/fonts/Pollen%5BROND,wght%5D.ttf): variable font for desktop apps
+
+## Upstream
+
+- [Open Runde](https://github.com/lauridskern/open-runde): the rounded typeface Pollen is built from
+- [Inter](https://github.com/rsms/inter): the typeface Open Runde is based on
