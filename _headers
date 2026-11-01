@@ -1,0 +1,16 @@
+# Cloudflare Pages response headers
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+# fonts may be used from other sites (OFL); browsers require CORS for web fonts
+/fonts/*
+  Access-Control-Allow-Origin: *
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/specimen/glyphs.json
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/assets/*
+  Cache-Control: public, max-age=86400

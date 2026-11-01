@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Problems with the original letterforms
+    url: https://github.com/lauridskern/open-runde/issues
+    about: If the issue is in Open Runde itself (not in Pollen's build), report it upstream.
