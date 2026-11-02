@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Pollen slides</title>
+<!-- Source for assets/peerlist-1.png … peerlist-3.png (1920x1080). Serve from the repo root so the font loads,
+     then screenshot each of #1, #2, #3 at a 1920x1080 viewport. -->
+<style>
+  @font-face { font-family: "Pollen"; src: url("../fonts/Pollen[ROND,wght].woff2") format("woff2"); font-weight: 400 700; }
+  :root { --bg: #f9f9fb; --ink: #3b3f45; --muted: #60646c; --chip: #e8e8ec; --line: #e0e1e6; }
+  html, body { margin: 0; background: var(--bg); }
+  .slide {
+    display: none; position: relative; width: 1920px; height: 1080px; overflow: hidden; box-sizing: border-box;
+    padding: 112px 136px; background: var(--bg); color: var(--ink); font-family: "Pollen", sans-serif;
+    grid-template-rows: auto 1fr auto; -webkit-font-smoothing: antialiased;
+  }
+  .slide:target, body:not(:has(:target)) #s1 { display: grid; }
+  .eyebrow { margin: 0; font-size: 34px; color: var(--muted); letter-spacing: -0.01em; }
+  .eyebrow b { color: var(--ink); font-weight: 600; }
+  .foot { display: flex; justify-content: space-between; align-items: end; gap: 48px; font-size: 30px; color: var(--muted); }
+  .foot b { color: var(--ink); font-weight: 600; }
+  .chips { display: flex; gap: 16px; }
+  .chip { font-size: 28px; color: var(--muted); background: var(--chip); border-radius: 999px; padding: 14px 26px; }
+  .chip b { color: var(--ink); font-weight: 600; margin-right: 8px; }
+  .rule { height: 4px; border-radius: 4px; background: var(--line); margin-bottom: 48px; }
+
+  /* 1: the word walks the design space, as in the banner */
+  .word { margin: 0; align-self: center; font-size: 470px; line-height: 0.9; letter-spacing: -0.045em; }
+  .word span { display: inline-block; }
+  .lede { margin: 0 0 56px; font-size: 64px; line-height: 1.15; letter-spacing: -0.025em; font-weight: 500; max-width: 1300px; }
+
+  /* 2: weight × roundness grid */
+  .title { margin: 0; font-size: 88px; line-height: 1; letter-spacing: -0.035em; font-weight: 600; }
+  .grid { align-self: center; display: grid; grid-template-columns: 200px repeat(3, 1fr); grid-auto-rows: auto; column-gap: 24px; row-gap: 8px; }
+  .grid .h { font-size: 26px; color: var(--muted); align-self: center; }
+  .grid .h b { color: var(--ink); font-weight: 600; margin-right: 8px; }
+  .grid .top { text-align: center; padding-bottom: 8px; }
+  .cell { font-size: 150px; line-height: 1.1; text-align: center; letter-spacing: -0.03em; }
+
+  /* 3: character set */
+  .scripts { align-self: center; display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; }
+  .script .big { font-size: 280px; line-height: 1; letter-spacing: -0.04em; font-weight: 500; font-variation-settings: "ROND" 70; }
+  .script .name { margin-top: 24px; font-size: 30px; color: var(--muted); }
+  .script .name b { color: var(--ink); font-weight: 600; margin-right: 10px; }
+  .script .set { margin-top: 12px; font-size: 34px; line-height: 1.35; letter-spacing: 0.02em; color: var(--ink); }
+</style>
+</head>
+<body>
+
+<section class="slide" id="s1">
+  <p class="eyebrow"><b>Pollen</b> · a free variable typeface</p>
+  <!-- light and round on the left, heavy and sharp on the right -->
+  <p class="word" aria-label="Pollen">
+    <span style="font-weight:400;font-variation-settings:'ROND' 100">P</span><span style="font-weight:460;font-variation-settings:'ROND' 80">o</span><span style="font-weight:520;font-variation-settings:'ROND' 60">l</span><span style="font-weight:580;font-variation-settings:'ROND' 40">l</span><span style="font-weight:640;font-variation-settings:'ROND' 20">e</span><span style="font-weight:700;font-variation-settings:'ROND' 0">n</span>
+  </p>
+  <div>
+    <p class="lede">One font file you can dial from sharp to soft.</p>
+    <div class="rule"></div>
+    <div class="foot">
+      <span>Built from <b>Open Runde</b> and <b>Inter</b> · SIL OFL 1.1</span>
+      <div class="chips">
+        <span class="chip"><b>wght</b>400–700</span>
+        <span class="chip"><b>ROND</b>0–100</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="s2">
+  <h2 class="title">Two axes, one file</h2>
+  <div class="grid">
+    <span></span>
+    <span class="h top"><b>ROND</b>0 · sharp</span>
+    <span class="h top"><b>ROND</b>50</span>
+    <span class="h top"><b>ROND</b>100 · soft</span>
+
+    <span class="h"><b>wght</b>400</span>
+    <span class="cell" style="font-weight:400;font-variation-settings:'ROND' 0">Rag</span>
+    <span class="cell" style="font-weight:400;font-variation-settings:'ROND' 50">Rag</span>
+    <span class="cell" style="font-weight:400;font-variation-settings:'ROND' 100">Rag</span>
+
+    <span class="h"><b>wght</b>550</span>
+    <span class="cell" style="font-weight:550;font-variation-settings:'ROND' 0">Rag</span>
+    <span class="cell" style="font-weight:550;font-variation-settings:'ROND' 50">Rag</span>
+    <span class="cell" style="font-weight:550;font-variation-settings:'ROND' 100">Rag</span>
+
+    <span class="h"><b>wght</b>700</span>
+    <span class="cell" style="font-weight:700;font-variation-settings:'ROND' 0">Rag</span>
+    <span class="cell" style="font-weight:700;font-variation-settings:'ROND' 50">Rag</span>
+    <span class="cell" style="font-weight:700;font-variation-settings:'ROND' 100">Rag</span>
+  </div>
+  <div>
+    <div class="rule"></div>
+    <div class="foot">
+      <span>Any weight from <b>400</b> to <b>700</b>, any roundness from <b>0</b> to <b>100</b></span>
+      <span>font-variation-settings: <b>"ROND" 40</b></span>
+    </div>
+  </div>
+</section>
+
+<section class="slide" id="s3">
+  <h2 class="title">2,494 characters</h2>
+  <div class="scripts">
+    <div class="script">
+      <div class="big">Aa</div>
+      <div class="name"><b>Latin</b>with accents</div>
+      <div class="set">ÀÉÎÕÜ ĄČĞŁŇ<br>àéîõü ąčğłň ß</div>
+    </div>
+    <div class="script">
+      <div class="big">Ωω</div>
+      <div class="name"><b>Greek</b></div>
+      <div class="set">ΑΒΓΔΕΖΗΘΛΞΠΣ<br>αβγδεζηθλξπσ</div>
+    </div>
+    <div class="script">
+      <div class="big">Жж</div>
+      <div class="name"><b>Cyrillic</b></div>
+      <div class="set">АБВГДЁЗИЙЛФЯ<br>абвгдёзийлфя</div>
+    </div>
+  </div>
+  <div>
+    <div class="rule"></div>
+    <div class="foot">
+      <span>WOFF2 for the web · TTF for desktop · <b>free for commercial use</b></span>
+      <span><b>pollen.nidheesh.dev</b></span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
