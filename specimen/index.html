@@ -139,7 +139,7 @@
      "name": "Which languages does Pollen support?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Pollen covers Latin (including accented letters), Greek and Cyrillic, with 2,494 characters."
+      "text": "Pollen covers Latin (including Vietnamese), Greek (including polytonic) and Cyrillic, with 2,494 characters. It has no Arabic, Hebrew, Thai, Devanagari, Chinese, Japanese or Korean, so pair it with a fallback font for those."
      }
     }
    ]
@@ -361,6 +361,13 @@
   .steps li { display: grid; grid-template-columns: 136px 1fr; gap: 24px; align-items: baseline; padding: 10px 0;
     font-size: min(7vw, var(--step-9)); line-height: 1.25; letter-spacing: -0.02em; white-space: nowrap; overflow: hidden; }
 
+  /* ---------- languages */
+  .lang-more { margin-top: 28px; max-width: 62ch; display: grid; gap: 16px; }
+  .lang-more p { margin: 0; text-wrap: pretty; }
+  .code { margin: 0; padding: 12px 16px; white-space: pre-wrap; border-radius: 10px; background: var(--surface-2);
+    font-size: var(--step--1); line-height: 1.5; font-feature-settings: "zero"; }
+  .code code { font: inherit; }
+
   /* ---------- faq + footer */
   .faq { margin: 0; padding: 0; list-style: none; max-width: 760px; }
   .faq li { position: relative; padding: 20px 0; }
@@ -546,6 +553,21 @@
     </div>
   </section>
 
+  <!-- ===================================================== languages -->
+  <section id="languages">
+    <div class="label"><h2>Languages</h2><span>Latin · Greek · Cyrillic</span></div>
+    <ul class="features">
+      <li><span class="meta">Latin<br>with Vietnamese</span><span>Đà Nẵng</span><span>Łódź · Straße</span></li>
+      <li><span class="meta">Greek<br>with polytonic</span><span>Καλημέρα</span><span>ἀρχὴ ἥμισυ</span></li>
+      <li><span class="meta">Cyrillic</span><span>Привет, мир</span><span>Ђорђе · Їжак</span></li>
+    </ul>
+    <div class="lang-more">
+      <p>Pollen has no Arabic, Hebrew, Thai, Devanagari, Chinese, Japanese or Korean. Put a fallback after it: browsers pick a font for each character, so text Pollen can't draw uses the next font in the list.</p>
+      <pre class="code"><code>font-family: "Pollen", system-ui, sans-serif;</code></pre>
+      <p>Drawing text on a server, for example onto an image, usually has no automatic fallback, so missing characters come out as empty boxes. Split the text into runs by which font has each character, and draw each run with its own font. Arabic, Thai and Devanagari also need a shaper such as HarfBuzz to join and place letters, and Arabic and Hebrew need right-to-left ordering.</p>
+    </div>
+  </section>
+
   <!-- ===================================================== faq -->
   <section>
     <div class="label"><h2>Questions</h2><span>About Pollen</span></div>
@@ -555,7 +577,7 @@
       <li><h3 class="t-h5">What is Pollen based on?</h3><p>Pollen is built from Open Runde by Laurids Kern, a rounded take on Inter by Rasmus Andersson. Pollen joins Open Runde's four static weights into one variable font and adds a roundness axis.</p></li>
       <li><h3 class="t-h5">What does the roundness axis do?</h3><p>The ROND axis runs from 0 to 100. At 100, the default, corners are fully rounded like Open Runde. At 0 they are sharp, close to Inter. Values in between blend the two.</p></li>
       <li><h3 class="t-h5">How do I use Pollen on a website?</h3><p>Download Pollen[ROND,wght].woff2, load it with @font-face and font-weight: 400 700, then set font-weight for weight and font-variation-settings: "ROND" 0–100 for roundness.</p></li>
-      <li><h3 class="t-h5">Which languages does Pollen support?</h3><p>Pollen covers Latin (including accented letters), Greek and Cyrillic, with 2,494 characters.</p></li>
+      <li><h3 class="t-h5">Which languages does Pollen support?</h3><p>Pollen covers Latin (including Vietnamese), Greek (including polytonic) and Cyrillic, with 2,494 characters. It has no Arabic, Hebrew, Thai, Devanagari, Chinese, Japanese or Korean, so pair it with a fallback font for those.</p></li>
     </ul>
   </section>
 
@@ -819,7 +841,7 @@
       anims.push(label.animate([{ opacity: 0 }, { opacity: 1 }], timing(0, 500)));
       anims.push(label.animate([{ transform: "scaleX(0)" }, { transform: "scaleX(1)" }],
         { ...timing(0, 900), pseudoElement: "::after" }));
-      const items = section.querySelectorAll(".scale > li, article > *, .columns > h3, .cols > p, .features > li, .steps > li, .faq > li, .filters, .glyph-view");
+      const items = section.querySelectorAll(".scale > li, article > *, .columns > h3, .cols > p, .features > li, .steps > li, .lang-more > *, .faq > li, .filters, .glyph-view");
       items.forEach((el, i) => {
         const delay = 120 + Math.min(i, 10) * 60;
         anims.push(el.animate([{ opacity: 0, transform: "translateY(16px)" }, { opacity: 1, transform: "none" }], timing(delay)));

@@ -5,7 +5,8 @@
 Key facts:
 
 - Axes: `wght` 400–700 (default 400; named instances Regular, Medium, Semibold, Bold) and `ROND` 0–100 (default 100, fully rounded; 0 gives sharp, Inter-like corners).
-- Scripts: Latin (including accented letters), Greek and Cyrillic; 2,494 encoded characters.
+- Scripts: Latin (including Vietnamese), Greek (including polytonic) and Cyrillic; 2,494 encoded characters.
+- Not covered: Arabic, Hebrew, Thai, Devanagari, Chinese, Japanese, Korean and other scripts. Use a fallback font (`font-family: "Pollen", system-ui, sans-serif`); server-side renderers need a font per text run, plus shaping for Arabic, Thai and Devanagari.
 - OpenType features: `case`, `frac`, `ordn`, `zero`, and kerning.
 - Formats: WOFF2 for the web, TTF for desktop apps.
 - License: SIL OFL 1.1. Free for personal and commercial use, including embedding in websites and apps. The font files may not be sold on their own, and copies must keep the copyright notices and the license.
