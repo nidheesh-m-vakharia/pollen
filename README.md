@@ -11,6 +11,10 @@ A free variable typeface by Nidheesh Vakharia. One file, two axes:
 | Weight | `wght` | 400–700 | 400 |
 | Roundness | `ROND` | 0–100 (sharp → soft) | 100 |
 
+## Languages
+
+Latin (including Vietnamese), Greek (including polytonic) and Cyrillic: 2,494 characters. There's no Arabic, Hebrew, Thai, Devanagari, Chinese, Japanese or Korean, so list a fallback after Pollen (`font-family: "Pollen", system-ui, sans-serif`). If you draw text on a server, give each run of text a font that has its characters, or those scripts come out as empty boxes.
+
 ## Built on Open Runde and Inter
 
 Pollen is a modified version of **[Open Runde](https://github.com/lauridskern/open-runde)** by Laurids Kern, which is a rounded take on **[Inter](https://github.com/rsms/inter)** by Rasmus Andersson. The letterforms are theirs. Pollen joins Open Runde's four static weights into one variable font and adds a roundness axis.

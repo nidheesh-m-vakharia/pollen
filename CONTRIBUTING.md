@@ -45,11 +45,14 @@ The specimen carries JSON-LD for the typeface and its FAQ. Keep the visible **Qu
 
 ```sh
 python3 scripts/make_icons.py   # favicon.svg/.ico, apple-touch-icon.png, icon-192/512.png from Pollen's own "P"
+python3 scripts/make_logo.py    # assets/logo*.svg/.png: the "P" mark plus a "Pollen" wordmark, horizontal, plus a square "P" on white
 ```
 
 ### Banner
 
 `assets/banner.png` is a 1280×640 screenshot of `assets/banner.html` (served from the repo root so the font loads). It doubles as the GitHub social preview and the site's `og:image`.
+
+`assets/peerlist-1.png` to `peerlist-3.png` are 1920×1080 screenshots of `assets/peerlist.html#s1`, `#s2` and `#s3`, made the same way. They're the project images on Peerlist.
 
 ## How the build works
 
